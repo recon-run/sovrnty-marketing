@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy - Texas Land Records Tools</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --accent: #4f46e5;
+    --accent-light: #6366f1;
+    --bg-deep: #08080c;
+    --surface-glass: rgba(255, 255, 255, 0.05);
+    --border-glass: rgba(255, 255, 255, 0.08);
+    --text-primary: #ededef;
+    --text-secondary: #9898a4;
+    --text-tertiary: #5a5a66;
+  }
+
+  html { background: var(--bg-deep); color: var(--text-primary); }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  .bg-layer {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .bg-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.35;
+  }
+
+  .bg-orb-1 {
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, #4f46e5 0%, transparent 70%);
+    top: -200px; left: -100px;
+  }
+
+  .bg-orb-2 {
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, #3730a3 0%, transparent 70%);
+    bottom: -150px; right: -100px;
+  }
+
+  .bg-noise {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 256px;
+    pointer-events: none;
+  }
+
+  .page {
+    position: relative;
+    z-index: 2;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 24px 40px;
+  }
+
+  .content {
+    max-width: 620px;
+    width: 100%;
+  }
+
+  .back-link {
+    display: inline-block;
+    font-size: 13px;
+    color: var(--text-tertiary);
+    text-decoration: none;
+    margin-bottom: 40px;
+    transition: color 0.2s;
+  }
+
+  .back-link:hover {
+    color: var(--text-secondary);
+  }
+
+  .title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 32px;
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    color: var(--text-tertiary);
+    margin-bottom: 40px;
+  }
+
+  .card {
+    background: var(--surface-glass);
+    backdrop-filter: blur(36px) saturate(1.4);
+    -webkit-backdrop-filter: blur(36px) saturate(1.4);
+    border: 1px solid var(--border-glass);
+    border-radius: 16px;
+    padding: 36px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 10%; right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.14), transparent);
+  }
+
+  .card p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+  }
+
+  .card p:last-child {
+    margin-bottom: 0;
+  }
+
+  .card strong {
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+
+  .contact {
+    margin-top: 32px;
+    font-size: 13px;
+    color: var(--text-tertiary);
+  }
+
+  .contact a {
+    color: var(--accent-light);
+    text-decoration: none;
+  }
+
+  .contact a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 600px) {
+    .card { padding: 28px 24px; }
+    .title { font-size: 26px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-layer">
+  <div class="bg-orb bg-orb-1"></div>
+  <div class="bg-orb bg-orb-2"></div>
+</div>
+<div class="bg-noise"></div>
+
+<div class="page">
+  <div class="content">
+
+    <a href="/" class="back-link">&larr; Back to sovrnty.co</a>
+
+    <h1 class="title">Privacy Policy</h1>
+    <p class="subtitle">Texas Land Records Tools -- Chrome Extension</p>
+
+    <div class="card">
+      <p><strong>Texas Land Records Tools</strong> does not collect, store, or transmit any personal data. The extension does not track browsing activity, and no data is sent to external servers.</p>
+
+      <p>All processing performed by the extension happens locally in your browser. No account or login is required, and no cookies or analytics are used.</p>
+
+      <p>The extension does not access any data beyond what is necessary to provide its functionality on supported county and title research websites.</p>
+
+      <p>This policy may be updated if the extension's functionality changes. Any updates will be reflected on this page.</p>
+    </div>
+
+    <p class="contact">Questions? Reach out at <a href="mailto:mtmurchison@recontitle.com">mtmurchison@recontitle.com</a></p>
+
+  </div>
+</div>
+
+</body>
+</html>
