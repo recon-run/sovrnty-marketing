@@ -274,7 +274,7 @@
 
     <!-- Signup card -->
     <div class="signup-card">
-      <div class="signup-label">Get notified at launch</div>
+      <div class="signup-label">Join the early access list</div>
       <div class="signup-form" id="signupForm">
         <input
           type="email"
@@ -285,7 +285,7 @@
           required
         />
         <button class="signup-btn" id="signupBtn" onclick="handleSignup()">
-          Notify me
+          Get early access
         </button>
       </div>
       <div class="signup-msg" id="signupMsg"></div>
@@ -319,13 +319,23 @@
   const SUPABASE_URL = 'https://sneivnfopsdzikhlrfjl.supabase.co';
   const SUPABASE_ANON_KEY = 'sb_publishable_mIin0442otRrMFjUHZzRfA_LhkvP6aa';
 
+function getUtmParams() {
+    const params = new URLSearchParams(window.location.search);
+    return {
+      utm_source:   params.get('utm_source')   || null,
+      utm_medium:   params.get('utm_medium')   || null,
+      utm_campaign: params.get('utm_campaign') || null,
+      utm_content:  params.get('utm_content')  || null,
+      referrer:     document.referrer || null,
+    };
+  }
+
   async function handleSignup() {
     const input = document.getElementById('emailInput');
     const btn = document.getElementById('signupBtn');
     const msg = document.getElementById('signupMsg');
     const email = input.value.trim();
 
-    // Basic validation
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       msg.textContent = 'Please enter a valid email address.';
       msg.className = 'signup-msg error';
@@ -346,13 +356,14 @@
           'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
           'Prefer': 'return=minimal',
         },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, ...getUtmParams() }),
       });
 
       if (res.ok) {
-        msg.textContent = "You're on the list. We'll be in touch.";
+        msg.textContent = "You're in. We'll email you when early access opens.";
         msg.className = 'signup-msg success';
         input.value = '';
+        if (window.plausible) window.plausible('Signup');
       } else if (res.status === 409) {
         msg.textContent = "You're already on the list.";
         msg.className = 'signup-msg success';
@@ -364,10 +375,10 @@
       msg.className = 'signup-msg error';
     } finally {
       btn.disabled = false;
-      btn.textContent = 'Notify me';
+      btn.textContent = 'Get early access';
     }
   }
-
+ 
   // Enter key submits
   document.getElementById('emailInput').addEventListener('keydown', (e) => {
     if (e.key === 'Enter') handleSignup();
